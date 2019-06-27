@@ -1,11 +1,38 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sklep";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 <h2>Index</h2>
-  <header class="default-header">
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    s
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+
+
+</head>
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
         <nav class="navbar navbar-expand-lg  navbar-light">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,15 +40,66 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
-                        <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
-                        <li>@Html.ActionLink("Logowanie/Rejestracja", "Login", "Home")</li>
-                        <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                        <nav class="navbar navbar-expand-lg  navbar-light">
+                            <div class="container">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                                    <ul class="navbar-nav">
+                                        <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
+                                        <li>@Html.ActionLink("Podsumowanie", "Podsumowanie", "Home")</li>
+                                        <li>@Html.ActionLink("Logowanie/Rejestracja", "Login", "Home")</li>
+                                        <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                                        <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
 
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <!-- End Header Area -->
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+        <div class="container-fluid">
+            <div class="row fullscreen align-items-center justify-content-center">
+                @*<div class="col-lg-6 col-md-12 d-flex align-self-end img-right no-padding">
+                        <img class="img-fluid" src="img/header-img.png" alt="">
+                    </div>*@
+                <div class="banner-content col-lg-6 col-md-12">
+                    <h1 class="text-uppercase">
+                        Witaj w sklepie<br>
+                        Sportowym
+                    </h1>
+                    <button class="primary-btn text-uppercase"><a href="#">Przejdź do sklepu</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="footer-text m-0">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
 
+
+
+</body>
+</html>

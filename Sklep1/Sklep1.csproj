@@ -99,9 +99,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\cart.html" />
-    <Content Include="Content\checkout.html" />
-    <Content Include="Content\confermation.html" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\availability-calendar.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -116,8 +115,6 @@
     <Content Include="Content\css\owl.carousel.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\Linearicons-Free.svg" />
-    <Content Include="Content\kontakt.html" />
-    <Content Include="Content\index.html" />
     <Content Include="Content\js\ion.rangeSlider.js" />
     <Content Include="Content\js\jquery.ajaxchimp.min.js" />
     <Content Include="Content\js\jquery.magnific-popup.min.js" />
@@ -129,7 +126,6 @@
     <Content Include="Content\js\parallax.min.js" />
     <Content Include="Content\js\vendor\bootstrap.min.js" />
     <Content Include="Content\js\vendor\jquery-2.2.4.min.js" />
-    <Content Include="Content\login.html" />
     <Content Include="Content\shop-doc\css\font-awesome.min.css" />
     <Content Include="Content\shop-doc\css\main.css" />
     <Content Include="Content\shop-doc\css\normalize.min.css" />
@@ -184,7 +180,15 @@
     <Content Include="Content\shop-doc\syntax-highlighter\styles\shThemeMDUltra.css" />
     <Content Include="Content\shop-doc\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="Content\shop-doc\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +324,9 @@
     <Content Include="Content\shop-doc\img\.DS_Store" />
     <Content Include="Content\shop-doc\js\.DS_Store" />
     <Content Include="Content\shop-doc\syntax-highlighter\.DS_Store" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -327,6 +334,10 @@
     <Content Include="Views\Home\Koszyk.cshtml" />
     <Content Include="Views\Home\Sklep.cshtml" />
     <Content Include="Views\Home\Kontakt.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Podsumowanie.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

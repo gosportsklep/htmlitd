@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "Koszyk";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<h2>Podsumowanie</h2>
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+
+</head>
+<body>
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <nav class="navbar navbar-expand-lg  navbar-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
+                        <li>@Html.ActionLink("Podsumowanie", "Podsumowanie", "Home")</li>
+                        <li>@Html.ActionLink("Logowanie/Rejestracja", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                        <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header Area -->
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+                <div class="col-first">
+                    <h1>Product Checkout</h1>
+                    <nav class="d-flex align-items-center justify-content-start">
+                        <a href="index.html">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                        <a href="checkout.html">Product Checkout</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+    <!-- Start Checkout Area -->
+    <div class="container">
+        <div class="checkput-login">
+            <div class="collapse" id="checkout-login">
+                <div class="checkout-login-collapse d-flex flex-column">
+                    <form action="#" class="d-block">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <input type="text" placeholder="Email*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Email*'" required class="common-input mt-10">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="password" placeholder="Hasło*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Hasło*'" required class="common-input mt-10">
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap">
+                            <button class="view-btn color-2 mt-20 mr-20"><span>Zaloguj</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End Checkout Area -->
+    <!-- Start Billing Details Form -->
+    <div class="container">
+        <form action="#" class="billing-form">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <h3 class="billing-title mt-20 mb-10">Adres wysyłki</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="text" placeholder="Imie*" onfocus="this.placeholder=''" onblur="this.placeholder = 'First name*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" placeholder="Nazwisko*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Last name*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" placeholder="Telefon*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Phone number*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="email" placeholder="Adres Email*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Email Address*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="Ulica*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Ulica*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="Miasto*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Miasto*'" required class="common-input">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="Kod Pocztowy" onfocus="this.placeholder=''" onblur="this.placeholder = 'Kod Pocztowy*'" class="common-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="order-wrapper mt-50">
+                        <h3 class="billing-title mb-10">Twoje zamówienie</h3>
+                        <div class="order-list">
+                            <div class="list-row d-flex justify-content-between">
+                                <div>Product</div>
+                                <div>Total</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <div>Pixelstore fresh Blackberry</div>
+                                <div>x 02</div>
+                                <div>$720.00</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <div>Pixelstore fresh Blackberry</div>
+                                <div>x 02</div>
+                                <div>$720.00</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <div>Pixelstore fresh Blackberry</div>
+                                <div>x 02</div>
+                                <div>$720.00</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <h6>Subtotal</h6>
+                                <div>$2160.00</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <h6>Shipping</h6>
+                                <div>Flat rate: $50.00</div>
+                            </div>
+                            <div class="list-row d-flex justify-content-between">
+                                <h6>Total</h6>
+                                <div class="total">$2210.00</div>
+                            </div>
+                            <button class="view-btn color-2 w-100 mt-20"><span>Zakończ</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- End Billing Details Form -->
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="footer-text m-0">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+    </footer>
+
+</body>
+</html>

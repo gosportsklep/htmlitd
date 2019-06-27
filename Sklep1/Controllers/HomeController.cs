@@ -23,6 +23,11 @@ namespace Sklep1.Controllers
             return View();
         }
 
+        public ActionResult Podsumowanie()
+        {
+            return View();
+        }
+
         public ActionResult Login()
         {
 
