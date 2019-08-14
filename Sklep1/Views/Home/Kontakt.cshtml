@@ -5,4 +5,37 @@
 }
 
 <h2>Kontakt</h2>
+<br /> <br />
+@if (ViewBag.Error != null)
+{
+    <h2>@ViewBag.Error</h2>
 
+}
+
+<div class="container">
+
+    <div class="row justify-content-center align-self-center">
+        <div class="col-md-6">
+            <div class="login-form">
+                <h3 class="billing-title text-center">Kontakt</h3>
+                <p class="text-center mt-80 mb-40">Skontaktuj się z nami!</p>
+                <form method="post" action="Kontakt">
+
+                    @*<span class="form-control"> Receiver: </span> 
+                    <input class="form-control" type="text" name="receiver" /> </br>
+                    <span class=" form-control"> Subject: </span> <input class="form-control" type="text" name="subject" /> <br />
+                    <span class=" form-control"> Message: </span> <input class="form-control" type="text" name="message" /> <br />
+                    <input class="btn btn-primary" type="submit" value="Send" />*@ 
+
+        <input type="text" name="sender" placeholder="mail" onfocus="this.placeholder=''" onblur="this.placeholder = 'Imię i nazwisko'" required class="common-input mt-20">
+        <input type="text" name="subject" placeholder="Temat*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Temat*'" required class="common-input mt-20">
+        <input type="text" name="message " placeholder="Wiadomość*" onfocus="this.placeholder=''" onblur="this.placeholder = 'Wiadomość*'" required class="common-input mt-20">
+        <button class="view-btn color-2 mt-50 w-100" type="submit"><span>Wyślij</span></button>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
