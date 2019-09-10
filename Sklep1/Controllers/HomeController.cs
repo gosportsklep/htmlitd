@@ -31,16 +31,15 @@ namespace Sklep1.Controllers
         }
 
         [HttpPost]
-
         public ActionResult AddProductToOrder(int productId)
         {
             var orders = db.Orders;
-            if (orders?.Any() != true || !orders.Any(r => r.OrderStatus == "W trakcie"))
+            if (orders?.Any() != true || !orders.Any(r => r.OrderStatus == "Pending"))
             {
                 Order order = new Order();
                 order.ProductsIds +=  productId + ",";
 
-                order.OrderStatus = "W trakcie";
+                order.OrderStatus = "Pending";
                 order.CreatedOn = DateTime.Now;
 
                 db.Orders.Add(order);
@@ -49,13 +48,11 @@ namespace Sklep1.Controllers
             }
             else
             {
-                var currentOrder = db.Orders.FirstOrDefault(x => x.OrderStatus == "W trakcie");
+                var currentOrder = db.Orders.FirstOrDefault(x => x.OrderStatus == "Pending");
 
                 var order = db.Orders.FirstOrDefault(x => x.Id == currentOrder.Id);
 
                 List<string> productsIds = order.ProductsIds.Split(',').ToList();
-
-                System.Diagnostics.Debug.WriteLine("Message " + "List of ProductsIds " + productsIds[0] + " second " + productsIds[1]);
 
                 if (!productsIds.Any(id => id == productId.ToString()))
                 {
@@ -78,9 +75,9 @@ namespace Sklep1.Controllers
 
             //Example of creating user check database model for more information
             User u = new User();
-            u.Username = "use2424r";
-            u.Password = "passw24242ord";
-            u.Email = "test424@tes242t.com";
+            u.Username = "user";
+            u.Password = "password";
+            u.Email = "test@test.com";
 
             //TOTEN
 
@@ -106,17 +103,61 @@ namespace Sklep1.Controllers
             }
         }
 
-        public ActionResult Koszyk()
+        public ActionResult FinishOrder(int orderId)
+        {
+            var order = db.Orders.SingleOrDefault(o => o.Id == orderId);
+
+            order.OrderStatus = "Complete";
+            db.SaveChanges();
+
+            Order newOrder = new Order();
+            newOrder.ProductsIds = "";
+
+            newOrder.OrderStatus = "Pending";
+            newOrder.CreatedOn = DateTime.Now;
+
+            db.Orders.Add(newOrder);
+            db.SaveChanges();
+
+            return RedirectToAction("Sklep");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteProductFromOrder(int productId, int orderId)
+        {
+            var order = db.Orders.FirstOrDefault(x => x.Id == orderId);
+
+            List<string> productsIds = order.ProductsIds.Split(',').ToList();
+            productsIds.Remove(productId.ToString());
+
+            order.ProductsIds = String.Join(",", productsIds);
+            db.SaveChanges();
+            return RedirectToAction("Koszyk");
+        }
+
+            public ActionResult Koszyk()
         {
 
             //   GetProducts().ForEach(p => db.ProductsList.Add(p));
             //db.SaveChanges();
 
-            List<Order> orders = db.Orders.ToList();
+            var order = db.Orders.SingleOrDefault(o => o.OrderStatus == "Pending");
             List<Product> products = db.ProductsList.ToList();
-            Tuple<List<Order>, List<Product>> tuple = new Tuple<List<Order>, List<Product>>(orders, products);
 
-            return View(tuple);
+
+            if (order == null)
+            {
+                Order newOrder = new Order();
+                order.ProductsIds = "";
+
+                order.OrderStatus = "Pending";
+                order.CreatedOn = DateTime.Now;
+
+                order = newOrder;
+            }
+
+                Tuple<Order, List<Product>> tuple = new Tuple<Order, List<Product>>(order, products);
+                return View(tuple);
         }
 
         private object Tuple(List<Order> orders, List<Product> products)
@@ -155,43 +196,6 @@ namespace Sklep1.Controllers
     };
             return products;
         }
-
-        ////Example of creating product check database model for more information
-        //Product p = new Product();
-        //p.Name = "stol";
-        //    p.Description = "Opis stolu 10 znakow";
-        //    p.Category = "pokoj";
-
-        //    Product p1 = new Product();
-        //p1.Name = "fotel";
-        //    p1.Description = "Opis fotela 10 znakow";
-        //    p1.Category = "pokoj";
-
-        //    Product p2 = new Product();
-        //p2.Name = "kuchenka";
-        //    p2.Description = "Opis kuchenki 10 znakow";
-        //    p2.Category = "kuchnia";
-
-        //    db.Products.Add(p);
-        //    db.Products.Add(p1);
-        //    db.Products.Add(p2);
-        //    try
-        //    {
-        //        db.SaveChanges();
-
-        //    }
-        //    catch (DbEntityValidationException ex)
-        //    {
-        //        foreach (var entityValidationErrors in ex.EntityValidationErrors)
-        //        {
-        //            foreach (var validationError in entityValidationErrors.ValidationErrors)
-        //            {
-        //                Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-        //            }
-        //        }
-        //        ViewBag.Message = "Something wrong";
-        //    }
-        //    return View();
 
         public ActionResult Kontakt()
         {

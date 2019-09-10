@@ -1,4 +1,4 @@
-﻿@model Tuple<List<Sklep1.Models.Order>, List<Sklep1.Models.Product>>
+﻿@model Tuple<Sklep1.Models.Order, List<Sklep1.Models.Product>>
 @{
     ViewBag.Title = "Koszyk";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
@@ -9,12 +9,19 @@
 
 @{
     var tupleItem = Model;
-    var order = tupleItem.Item1.SingleOrDefault(o => o.OrderStatus == "W trakcie");
+    var order = tupleItem.Item1;
 
-    if (order == null) {
+    if (order == null)
+    {
         throw new Exception();
     }
-    else {
+    else
+    {
+        using (Html.BeginForm("FinishOrder", "Home", new { orderId = order.Id }))
+        {
+            <input type="submit" value="Zakoncz zamowienie" class="btn btn-default" />
+        }
+
         if (order.ProductsIds != "")
         {
             List<string> productsIds = order.ProductsIds.Split(',').ToList();
@@ -23,47 +30,41 @@
                 if (productsIds.Any(id => id == product.Id.ToString()))
                 {
                     {
-                    <p>
-                        <tr style="border:1px solid black">
-                            <span style="margin-left:20px">
-                                @if (product.ImageUrl != null && product.ImageUrl.Length > 0)
-                                {
-                                    <img src="@Url.Content(product.ImageUrl)" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
-}
-else
-{
-                                    <img src="@Url.Content("~/Images/item_placeholder.png")" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
-}
-                                @Html.DisplayFor(modelItem => product.Name)
-                                <span style="font-size: 16px">
-                                    @product.Price zł
-                                </span>
-                    <p>
-                        @Html.DisplayFor(modelItem => product.Description)
-                    </p>
+                        <p>
+                            <tr style="border:1px solid black">
+                                <span style="margin-left:20px">
+                                    @if (product.ImageUrl != null && product.ImageUrl.Length > 0)
+                                    {
+                                        <img src="@Url.Content(product.ImageUrl)" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Images/item_placeholder.png")" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                                    }
+                                    @Html.DisplayFor(modelItem => product.Name)
+                                    <span style="font-size: 16px">
+                                        @product.Price zł
+                                    </span>
+                        <p>
+                            @Html.DisplayFor(modelItem => product.Description)
+                        </p>
 
-                    @using (Html.BeginForm("AddProductToOrder", "Home", new { productId = product.Id }))
-{
-                        <input type="submit" value="Usun" class="btn btn-default" />
-}
 
-                    </span>
-                    </tr>
-                    </p>
-                            }
+                        @using (Html.BeginForm("DeleteProductFromOrder", "Home", new { productId = product.Id, orderId = order.Id }))
+                        {
+                            <input type="submit" value="Usun" class="btn btn-default" />
                         }
+
+                        </span>
+                        </tr>
+                        </p>
                     }
                 }
-
             }
         }
-    else
-    {
-        <p>
-            @Html.Display("Zamowienie jest puste")
-        </p>
     }
 }
+
 
 
 
