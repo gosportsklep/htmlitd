@@ -11,11 +11,11 @@ namespace Sklep1.Models
         [Key]
         public int Id { get; set; }
 
-        public ICollection<Product> Products { get; set; }
-
         [ScaffoldColumn(false)]
         public DateTime? CreatedOn { get; set; }
 
         public string OrderStatus { get; set; }
+
+        public string ProductsIds { get; set; }
     }
 }

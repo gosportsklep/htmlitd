@@ -1,8 +1,41 @@
-﻿
+﻿@model List<Sklep1.Models.Product>
 @{
     ViewBag.Title = "Sklep";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 <h2>Sklep</h2>
+
+@foreach (var item in Model)
+{
+    <p>
+        <tr style="border:1px solid black">
+            <span style="margin-left:20px">
+                @if (item.ImageUrl != null && item.ImageUrl.Length > 0)
+                {
+                    <img src="@Url.Content(item.ImageUrl)" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Images/item_placeholder.png")" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                }
+                @Html.DisplayFor(modelItem => item.Name)
+                <span style="font-size: 16px">
+                    @item.Price zł
+                </span>
+    <p>
+        @Html.DisplayFor(modelItem => item.Description)
+    </p>
+    <br />
+
+
+    @using (Html.BeginForm("AddProductToOrder", "Home", new { productId = item.Id }))
+    {
+        <input type="submit" value="Dodaj do koszyka" class="btn btn-default" />
+    }
+
+    </span>
+    </tr>
+    </p>
+}
 

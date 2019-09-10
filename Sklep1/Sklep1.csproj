@@ -47,11 +47,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -188,6 +186,7 @@
     <Content Include="Content\shop-doc\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="Content\shop-doc\syntax-highlighter\styles\shThemeRDark.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\item_placeholder.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -196,12 +195,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906061323061_FirstMigration.cs" />
-    <Compile Include="Migrations\201906061323061_FirstMigration.Designer.cs">
-      <DependentUpon>201906061323061_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909091728502_f.cs" />
+    <Compile Include="Migrations\201909091728502_f.Designer.cs">
+      <DependentUpon>201909091728502_f.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101544596_orderids.cs" />
+    <Compile Include="Migrations\201909101544596_orderids.Designer.cs">
+      <DependentUpon>201909101544596_orderids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101638090_quickFix.cs" />
+    <Compile Include="Migrations\201909101638090_quickFix.Designer.cs">
+      <DependentUpon>201909101638090_quickFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\DatabaseInit.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
@@ -341,8 +349,14 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906061323061_FirstMigration.resx">
-      <DependentUpon>201906061323061_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909091728502_f.resx">
+      <DependentUpon>201909091728502_f.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101544596_orderids.resx">
+      <DependentUpon>201909101544596_orderids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101638090_quickFix.resx">
+      <DependentUpon>201909101638090_quickFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

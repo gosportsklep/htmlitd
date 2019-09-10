@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using Sklep1.Models;
 
 namespace Sklep1
 {
@@ -13,6 +15,8 @@ namespace Sklep1
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new DatabaseInit());
+
         }
     }
 }

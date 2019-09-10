@@ -1,9 +1,69 @@
-﻿
+﻿@model Tuple<List<Sklep1.Models.Order>, List<Sklep1.Models.Product>>
 @{
     ViewBag.Title = "Koszyk";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
+
 }
 
 <h2>Koszyk</h2>
 
- 
+@{
+    var tupleItem = Model;
+    var order = tupleItem.Item1.SingleOrDefault(o => o.OrderStatus == "W trakcie");
+
+    if (order == null) {
+        throw new Exception();
+    }
+    else {
+        if (order.ProductsIds != "")
+        {
+            List<string> productsIds = order.ProductsIds.Split(',').ToList();
+            foreach (var product in tupleItem.Item2)
+            {
+                if (productsIds.Any(id => id == product.Id.ToString()))
+                {
+                    {
+                    <p>
+                        <tr style="border:1px solid black">
+                            <span style="margin-left:20px">
+                                @if (product.ImageUrl != null && product.ImageUrl.Length > 0)
+                                {
+                                    <img src="@Url.Content(product.ImageUrl)" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+}
+else
+{
+                                    <img src="@Url.Content("~/Images/item_placeholder.png")" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+}
+                                @Html.DisplayFor(modelItem => product.Name)
+                                <span style="font-size: 16px">
+                                    @product.Price zł
+                                </span>
+                    <p>
+                        @Html.DisplayFor(modelItem => product.Description)
+                    </p>
+
+                    @using (Html.BeginForm("AddProductToOrder", "Home", new { productId = product.Id }))
+{
+                        <input type="submit" value="Usun" class="btn btn-default" />
+}
+
+                    </span>
+                    </tr>
+                    </p>
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    else
+    {
+        <p>
+            @Html.Display("Zamowienie jest puste")
+        </p>
+    }
+}
+
+
+
