@@ -5,6 +5,7 @@ body{
 	font-size:16px;
 	line-height:18px;
 	color:#777;
+    padding: 10px;
 }
 
 p{
@@ -33,7 +34,7 @@ h5 { font-size: 16px;}
 h6 { font-size: 14px;}
 
 strong {
-  letter-s;;Dacing: 1px;
+  letter-s: Dacing: 1px;
 }
 
 code {

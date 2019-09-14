@@ -10,7 +10,6 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
     <!-- Author Meta -->
     <meta name="author" content="CodePixar">
     <!-- Meta Description -->
@@ -25,14 +24,14 @@
     <!--
     CSS
     ============================================= -->
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
-    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="~/Content/css/linearicons.css"/>
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/css/nice-select.css" />
+    <link rel="stylesheet" href="~/Content/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="~/Content/css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/css/main.css" />
 </head>
 <body>
     <header class="default-header">
@@ -59,7 +58,7 @@
                 <div class="col-first">
                     <h1>Kontakt</h1>
                     <nav class="d-flex align-items-center justify-content-start">
-                        <a href="index.html">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                        <a href="Index.cshtml">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
                     </nav>
                 </div>
             </div>
@@ -74,7 +73,7 @@
                 <div class="login-form">
                     <h3 class="billing-title text-center">Kontakt</h3>
                     <p class="text-center mt-80 mb-40">Skontaktuj się z nami!</p>
-                    <form method="post" action="Kontakt">
+                    <form method="post" action="Kontakt.cshtml">
 
                         @*<span class="form-control"> Receiver: </span>
                             <input class="form-control" type="text" name="receiver" /> </br>
@@ -98,14 +97,14 @@
     <footer class="footer-area section-gap">
         <div class="container">
         <div class="row">
-            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+            @*<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">*@
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 <p class="footer-text m-0">
                     Copyright &copy;
                     <script>document.write(new Date().getFullYear());</script>
                 </p>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
+            @*</div>*@
         </div>
         </div>
     </footer>
