@@ -1,4 +1,9 @@
-﻿@model Tuple<Sklep1.Models.Order, List<Sklep1.Models.Product>>
+﻿@{
+   
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+@model Tuple<Sklep1.Models.Order, List<Sklep1.Models.Product>>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
@@ -109,16 +114,16 @@
     <!-- start footer Area -->
     <footer class="footer-area section-gap">
         <div class="container">
-        <div class="row">
-            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <p class="footer-text m-0">
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script>
-                </p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="footer-text m-0">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
             </div>
-        </div>
         </div>
     </footer>
     <!-- End footer Area -->
