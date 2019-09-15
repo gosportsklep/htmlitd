@@ -12,8 +12,8 @@ namespace Sklep1.Controllers
 {
     public class HomeController : Controller
     {
-
         private AppDbContext db = new AppDbContext();
+
         // GET: Home
         public ActionResult Index()
         {
@@ -22,12 +22,12 @@ namespace Sklep1.Controllers
 
         public ActionResult Sklep()
         {
-           foreach(var order in db.Orders)
+            foreach (var order in db.Orders)
             {
-              System.Diagnostics.Debug.WriteLine("Order products " + order.ProductsIds);
+                System.Diagnostics.Debug.WriteLine("Order products " + order.ProductsIds);
             }
 
-              return View(db.ProductsList.ToList());
+            return View(db.ProductsList.ToList());
         }
 
         [HttpPost]
@@ -37,7 +37,7 @@ namespace Sklep1.Controllers
             if (orders?.Any() != true || !orders.Any(r => r.OrderStatus == "Pending"))
             {
                 Order order = new Order();
-                order.ProductsIds +=  productId + ",";
+                order.ProductsIds += productId + ",";
 
                 order.OrderStatus = "Pending";
                 order.CreatedOn = DateTime.Now;
@@ -56,37 +56,36 @@ namespace Sklep1.Controllers
 
                 if (!productsIds.Any(id => id == productId.ToString()))
                 {
-                    order.ProductsIds +=  productId + ",";
+                    order.ProductsIds += productId + ",";
 
                     db.Entry(order).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     System.Diagnostics.Debug.WriteLine("Message " + "Products has been added to order");
-                  }
-                  else
-                  {
+                }
+                else
+                {
                     System.Diagnostics.Debug.WriteLine("Message " + "This product is already in this order");
-                  }
+                }
             }
+
             return RedirectToAction("Sklep");
         }
 
-        public ActionResult Login()
+        public ActionResult Register()
         {
+            return View();
+        }
 
-            //Example of creating user check database model for more information
-            User u = new User();
-            u.Username = "user";
-            u.Password = "password";
-            u.Email = "test@test.com";
-
-            //TOTEN
-
-            db.UsersList.Add(u);
+        [HttpPost]
+        public ActionResult Register(User user)
+        {
             try
             {
+                var users = db.Users;
+                users.Add(user);
                 db.SaveChanges();
-                ViewBag.Message = "User has been added";
-                return View();
+                ViewBag.Message = "Successfully registered";
+                return View("Login");
             }
             catch (DbEntityValidationException ex)
             {
@@ -94,14 +93,43 @@ namespace Sklep1.Controllers
                 {
                     foreach (var validationError in entityValidationErrors.ValidationErrors)
                     {
-                        Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        Response.Write("Property: " + validationError.PropertyName + " Error: " +
+                                       validationError.ErrorMessage);
                     }
                 }
+
                 ViewBag.Message = "Something wrong";
 
-                return View();
+                return View("Register");
             }
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Login(LoginForm loginForm)
+        {
+            var loginsDb = db.Logins;
+            var usersDb = db.Users;
+            var user = usersDb.First(x => x.Username == loginForm.Username && x.Password == loginForm.Password);
+            if (user == null)
+            {
+                //login fail
+                return View("Login");
+
+            }
+            else
+            {
+                var token = (user.Password.GetHashCode() + user.Username.GetHashCode()).ToString();
+                loginsDb.Add(new LoginDatabaseRow(user.Id, token));
+                db.SaveChanges();
+                return View("Index");
+            }
+        }
+
 
         public ActionResult FinishOrder(int orderId)
         {
@@ -135,9 +163,8 @@ namespace Sklep1.Controllers
             return RedirectToAction("Koszyk");
         }
 
-            public ActionResult Koszyk()
+        public ActionResult Koszyk()
         {
-
             //   GetProducts().ForEach(p => db.ProductsList.Add(p));
             //db.SaveChanges();
 
@@ -156,45 +183,8 @@ namespace Sklep1.Controllers
                 order = newOrder;
             }
 
-                Tuple<Order, List<Product>> tuple = new Tuple<Order, List<Product>>(order, products);
-                return View(tuple);
-        }
-
-        private object Tuple(List<Order> orders, List<Product> products)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static List<Product> GetProducts()
-        {
-            var products = new List<Product>
-       {
-           new Product
-           {
-               Id = 0,
-               Name = "Rękawice bramkarskie",
-               Price = 29,
-               Description = "Rękawice bramkarskie przeznaczone dla mężczyzn.",
-               Category = "Piłka nożna"
-           },
-           new Product
-           {
-               Id = 1,
-               Name = "Kask",
-               Price = 299,
-               Description = "Doskonały kask narciarski wyposażony w regulowany system wentylacji",
-               Category = "Narciarstwo",
-           },
-           new Product
-           {
-               Id = 2,
-               Name = "Szorty",
-               Price = 39,
-               Description = "Dziecięce szorty kąpielowe to idealny wybór na letni wypoczynek nad morzem lub jeziorem czy do codziennego użytku w upalne dni.",
-               Category = "Sporty wodne"
-           }
-    };
-            return products;
+            Tuple<Order, List<Product>> tuple = new Tuple<Order, List<Product>>(order, products);
+            return View(tuple);
         }
 
         public ActionResult Kontakt()
@@ -223,28 +213,28 @@ namespace Sklep1.Controllers
                         DeliveryMethod = SmtpDeliveryMethod.Network,
                         UseDefaultCredentials = false,
                         Credentials = new NetworkCredential(receiverEmail.Address, password)
-
                     };
 
                     using (var mess = new MailMessage(senderEmail, receiverEmail)
                     {
-                        Subject = senderEmail +" "+ subject,
+                        Subject = senderEmail + " " + subject,
                         Body = body
                     })
                     {
                         smtp.Send(mess);
                     }
                 }
+
                 return View();
             }
 
             catch (Exception e)
             {
                 ViewBag.Error = e.GetBaseException().ToString();
-               // ViewBag.Error = "Nie udało się wysłać, spróbuj ponownie lub póżniej";
+                // ViewBag.Error = "Nie udało się wysłać, spróbuj ponownie lub póżniej";
             }
+
             return View();
         }
-       
     }
 }

@@ -46,16 +46,31 @@ namespace Sklep1.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Email, unique: true);
             
+            CreateTable(
+                    "dbo.Logins",
+                    c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
+                        Token = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.UserId)
+                .Index(t => t.UserId, unique: true);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Products", "Order_Id", "dbo.Orders");
+            DropForeignKey("dbo.Logins", "UserId", "dbo.Users");
             DropIndex("dbo.Users", new[] { "Email" });
+            DropIndex("dbo.Logins", new[] { "UserId" });
             DropIndex("dbo.Products", new[] { "Order_Id" });
             DropTable("dbo.Users");
             DropTable("dbo.Products");
             DropTable("dbo.Orders");
+            DropTable("dbo.Logins");
         }
     }
 }
