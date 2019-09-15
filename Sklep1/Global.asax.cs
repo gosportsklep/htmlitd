@@ -15,8 +15,7 @@ namespace Sklep1
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new DatabaseInit());
-
+//            Database.SetInitializer(new DatabaseInit());
         }
     }
 }

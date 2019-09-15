@@ -15,10 +15,12 @@ namespace Sklep1.Models
 
         }
 
-        public DbSet<User> UsersList { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Product> ProductsList { get; set; }
 
-        public DbSet<Order> Orders { get; set; }        
+        public DbSet<Order> Orders { get; set; }       
+        
+        public DbSet<LoginDatabaseRow> Logins { get; set; }    
     }
 }
