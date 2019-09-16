@@ -1,44 +1,92 @@
 ﻿@model Sklep1.Models.LoginForm
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Logowanie";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Login</h2>
+<html>
+<header class="default-header">
+    <nav class="navbar navbar-expand-lg  navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li>@Html.ActionLink("Strona Główna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
+                    <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
+                    <li>@Html.ActionLink("Logowanie", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Rejestracja", "Register", "Home")
+                    <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+            <div class="col-first">
+                <h1>Logowanie</h1>
+                <nav class="d-flex align-items-center justify-content-start">
+                    <a href="Index">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LoginForm</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    <div class="row justify-content-center align-self-center">
+        <div class="login-form">
+            <h4>Zaloguj się</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Zaloguj się" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót", "Index")
 </div>
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            @*<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">*@
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p class="footer-text m-0">
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script>
+            </p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            @*</div>*@
+        </div>
+    </div>
+</footer>
+</html>
