@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Sklep1.Models
 {
-    public class Product
+    public class Product : IEnumerable
     {
+  
+
         [Key]
         public int Id { get; set; }
 
@@ -25,5 +25,10 @@ namespace Sklep1.Models
         [ScaffoldColumn(false)]
         [Display(Name = "Picture")]
         public string ImageUrl { get; set; }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

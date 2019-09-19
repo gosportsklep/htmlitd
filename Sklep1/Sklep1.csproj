@@ -346,11 +346,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\OldLogin.cshtml" />
     <Content Include="Views\Home\Koszyk.cshtml" />
-    <Content Include="Views\Home\Sklep.cshtml" />
+    <Content Include="Views\Home\OldSklep.cshtml" />
     <Content Include="Views\Home\Kontakt.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Sklep.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
