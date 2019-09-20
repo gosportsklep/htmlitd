@@ -202,8 +202,8 @@ namespace Sklep1.Controllers
 
         public ActionResult DanePrzelew()
         {
-            
-            return View();
+            var order = db.Orders.SingleOrDefault(o => o.OrderStatus == "Pending");
+            return View(order);
         }
 
         public ActionResult Kontakt()

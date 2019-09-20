@@ -80,11 +80,13 @@
 
     <hr/>
     <dl class="dl-horizontal">
-
-        <text>Numer Twojego zamówienia: </text>
+        @{
+            var tupleItem = Model;
+            <text>Numer Twojego zamówienia: </text>
         <dt>
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayFor(model => tupleItem.Id)
         </dt>
+        }
 
 
         <text> Prosimy o przelew na konto 123412341234, w tytule podaj numer zamowienia </text>
@@ -114,4 +116,5 @@
         </div>
     </div>
 </footer>
+</body>
 </html>
