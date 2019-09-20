@@ -109,8 +109,13 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Zapłać" class="btn btn-default"/>
+                        
+                        @using (Html.BeginForm("DanePrzelew", "Home"))
+                        {                          
+                            <input type="submit" value="Zapłać" class="btn btn-default"/>
+                        }
                     </div>
+                  
                 </div>
             </div>
         </div>
@@ -121,6 +126,9 @@
 <div>
     @Html.ActionLink("Powrót", "Index", "Home", new { @class = "view-btn color-2 mt-10" })
 </div>
+
+
+
 <footer class="footer-area section-gap">
     <div class="container">
         <div class="row">

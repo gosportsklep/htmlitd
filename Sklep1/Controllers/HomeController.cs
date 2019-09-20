@@ -188,7 +188,7 @@ namespace Sklep1.Controllers
         }
 
         public ActionResult Danedowysylki()
-        {
+        {          
             return View();
         }
 
@@ -197,9 +197,14 @@ namespace Sklep1.Controllers
         {
             db.UserOrderData.Add(userData);
             db.SaveChanges();
-            return RedirectToAction("Koszyk");
+            return RedirectToAction("DanePrzelew");
         }
 
+        public ActionResult DanePrzelew()
+        {
+            
+            return View();
+        }
 
         public ActionResult Kontakt()
         {

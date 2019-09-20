@@ -358,6 +358,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Sklep.cshtml" />
     <Content Include="Views\Home\Danedowysylki.cshtml" />
+    <Content Include="Views\Home\DanePrzelew.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
