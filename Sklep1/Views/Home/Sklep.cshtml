@@ -98,7 +98,14 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ImageUrl)
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@Url.Content(item.ImageUrl)" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Images/item_placeholder.png")" alt="Brak zdjecia" style="height: 45px" class="img-responsive img-circle" />
+                    }
                 </th>
 
                 <td>
