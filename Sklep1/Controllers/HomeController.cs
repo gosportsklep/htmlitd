@@ -187,6 +187,20 @@ namespace Sklep1.Controllers
             return View(tuple);
         }
 
+        public ActionResult Danedowysylki()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Danedowysylki(UserData userData)
+        {
+            db.UserOrderData.Add(userData);
+            db.SaveChanges();
+            return RedirectToAction("Koszyk");
+        }
+
+
         public ActionResult Kontakt()
         {
             return View();

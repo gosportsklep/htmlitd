@@ -21,6 +21,8 @@ namespace Sklep1.Models
 
         public DbSet<Order> Orders { get; set; }       
         
-        public DbSet<LoginDatabaseRow> Logins { get; set; }    
+        public DbSet<LoginDatabaseRow> Logins { get; set; }
+
+        public DbSet <UserData> UserOrderData { get; set; }
     }
 }

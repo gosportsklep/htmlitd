@@ -17,6 +17,6 @@ namespace Sklep1.Models
         
         public int UserId { get; set; }
         
-        public String Token { get; set; }
+        public string Token { get; set; }
     }
 }

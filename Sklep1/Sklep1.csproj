@@ -217,6 +217,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\DatabaseInit.cs" />
     <Compile Include="Models\LoginDatabaseRow.cs" />
     <Compile Include="Models\LoginForm.cs" />
@@ -352,6 +353,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Sklep.cshtml" />
+    <Content Include="Views\Home\Danedowysylki.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

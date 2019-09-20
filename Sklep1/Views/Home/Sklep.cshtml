@@ -36,105 +36,111 @@
 </head>
 <body>
     <!-- Start Header Area -->
-<header class="default-header">
-    <nav class="navbar navbar-expand-lg  navbar-light">
+    <header class="default-header">
+        <nav class="navbar navbar-expand-lg  navbar-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li>@Html.ActionLink("Strona Główna", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
+                        <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
+                        <li>@Html.ActionLink("Logowanie", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Rejestracja", "Register", "Home")
+                        <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="banner-area organic-breadcrumb">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li>@Html.ActionLink("Strona Główna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
-                    <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
-                    <li>@Html.ActionLink("Logowanie", "Login", "Home")</li>
-                    <li>@Html.ActionLink("Rejestracja", "Register", "Home")
-                    <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
-                </ul>
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+                <div class="col-first">
+                    <h1>Sklep</h1>
+                    <nav class="d-flex align-items-center justify-content-start">
+                        <a href="Index">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                    </nav>
+                </div>
             </div>
         </div>
-    </nav>
-</header>
-
-<section class="banner-area organic-breadcrumb">
-    <div class="container">
-        <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
-            <div class="col-first">
-                <h1>Sklep</h1>
-                <nav class="d-flex align-items-center justify-content-start">
-                    <a href="Index">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
-                </nav>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-<table class="table">
+    <table class="table">
 
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
         <tr>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
             <th>
                 @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @using (Html.BeginForm("AddProductToOrder", "Home", new {productId = item.Id}))
-                {
-                    <input type="submit" value="Dodaj do koszyka" class="btn btn-default"/>
-                }
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
 
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
 
-
-
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
 
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageUrl)
+                </th>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @using (Html.BeginForm("AddProductToOrder", "Home", new { productId = item.Id }))
+                    {
+                        <input type="submit" value="Dodaj do koszyka" class="btn btn-default" />
+                    }
 
 
-    <div>
-        @Html.ActionLink("Powrót", "Index","Home", new {@class= "view-btn color-2 mt-10" })
-    </div>
-    <footer class="footer-area section-gap">
+
+
+                </td>
+               
+
+            </tr>
+        }
+      
+    </table>
+
+
+
+<div id="powrot"align="left">
+    @Html.ActionLink("Powrót", "Index", "Home", new { @class = "view-btn color-2 mt-10" })
+</div>
+<div id="przejdzdokoszyka" align="right">
+    @Html.ActionLink("Przejdz do koszyka", "Koszyk", "Home", new { @class = "view-btn color-2 mt-10" })
+</div>
+<br/>
+<footer class="footer-area section-gap">
         <div class="container">
             <div class="row">
                 @*<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">*@

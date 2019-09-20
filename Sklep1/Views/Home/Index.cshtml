@@ -59,7 +59,9 @@
                         Witaj w sklepie<br>
                         Sportowym
                     </h1>
-                    <button class="primary-btn text-uppercase"><a href="Sklep">Przejdź do sklepu</a></button>
+                    <div>
+                        @Html.ActionLink("Przejdz do sklepu", "Sklep", "Home", new { @class = "view-btn color-2 mt-10" })
+                    </div>
                 </div>
             </div>
         </div>

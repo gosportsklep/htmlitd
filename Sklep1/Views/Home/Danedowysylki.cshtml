@@ -1,0 +1,138 @@
+﻿@model Sklep1.Models.UserData
+
+@{
+    ViewBag.Title = "Danedowysylki";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<html>
+<header class="default-header">
+    <nav class="navbar navbar-expand-lg  navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li>@Html.ActionLink("Strona Główna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Sklep", "Sklep", "Home")</li>
+                    <li>@Html.ActionLink("Koszyk", "Koszyk", "Home")</li>
+                    <li>@Html.ActionLink("Logowanie", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Rejestracja", "Register", "Home")
+                    <li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+            <div class="col-first">
+                <h1>Dane do wysyłki</h1>
+                <nav class="d-flex align-items-center justify-content-start">
+                    <a href="Index">Strona Główna<i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+    <div class="row justify-content-center align-self-center">
+        <div class="col-md-6">
+            <div class="login-form">
+                <h3 class="billing-title text-center">Adres</h3>
+                    <p class="text-center mt-80 mb-40">Podaj adres do wysyłki!</p>
+
+                <hr/>
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Imie, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Imie, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Imie, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nazwisko, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nazwisko, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Nazwisko, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ulica, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ulica, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Ulica, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Numerdomu, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Numerdomu, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Numerdomu, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kodpocztowy, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Kodpocztowy, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Kodpocztowy, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Miasto, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Miasto, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Miasto, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Zapłać" class="btn btn-default"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Powrót", "Index", "Home", new { @class = "view-btn color-2 mt-10" })
+</div>
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            @*<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">*@
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p class="footer-text m-0">
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script>
+            </p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            @*</div>*@
+        </div>
+    </div>
+</footer>
+</html>
