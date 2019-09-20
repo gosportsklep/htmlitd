@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201909101638090_quickFix.Designer.cs">
       <DependentUpon>201909101638090_quickFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909200050438_UserDatas.cs" />
+    <Compile Include="Migrations\201909200050438_UserDatas.Designer.cs">
+      <DependentUpon>201909200050438_UserDatas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\UserData.cs" />
@@ -373,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909101638090_quickFix.resx">
       <DependentUpon>201909101638090_quickFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200050438_UserDatas.resx">
+      <DependentUpon>201909200050438_UserDatas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
