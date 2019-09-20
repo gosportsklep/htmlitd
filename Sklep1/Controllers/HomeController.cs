@@ -24,12 +24,16 @@ namespace Sklep1.Controllers
 
         public ActionResult Sklep()
         {
-            foreach (var order in db.Orders)
-            {
-                System.Diagnostics.Debug.WriteLine("Order products " + order.ProductsIds);
+            if ( db.ProductsList.Count() == 0)
+           {
+                GetProducts().ForEach(p => db.ProductsList.Add(p));
+                db.SaveChanges();
+                return View(GetProducts());
             }
-
-            return View(db.ProductsList.ToList());
+            else
+            {
+                return View(db.ProductsList.ToList());
+            }
         }
 
         [HttpPost]
@@ -136,20 +140,21 @@ namespace Sklep1.Controllers
         public ActionResult FinishOrder(int orderId)
         {
             var order = db.Orders.SingleOrDefault(o => o.Id == orderId);
+            if (order != null)
+            {
+                order.OrderStatus = "Complete";
+                db.SaveChanges();
 
-            order.OrderStatus = "Complete";
-            db.SaveChanges();
+                Order newOrder = new Order();
+                newOrder.ProductsIds = "";
 
-            Order newOrder = new Order();
-            newOrder.ProductsIds = "";
+                newOrder.OrderStatus = "Pending";
+                newOrder.CreatedOn = DateTime.Now;
 
-            newOrder.OrderStatus = "Pending";
-            newOrder.CreatedOn = DateTime.Now;
-
-            db.Orders.Add(newOrder);
-            db.SaveChanges();
-
-            return RedirectToAction("Sklep");
+                db.Orders.Add(newOrder);
+                db.SaveChanges();
+            }
+                return RedirectToAction("Sklep");
         }
 
         [HttpPost]
@@ -177,10 +182,10 @@ namespace Sklep1.Controllers
             if (order == null)
             {
                 Order newOrder = new Order();
-                order.ProductsIds = "";
+                newOrder.ProductsIds = "";
 
-                order.OrderStatus = "Pending";
-                order.CreatedOn = DateTime.Now;
+                newOrder.OrderStatus = "Pending";
+                newOrder.CreatedOn = DateTime.Now;
 
                 order = newOrder;
             }
@@ -194,7 +199,41 @@ namespace Sklep1.Controllers
             return View();
         }
 
-        [HttpPost]
+
+        private static List<Product> GetProducts()
+        {
+            var products = new List<Product>
+       {
+           new Product
+           {
+               Id = 0,
+               Name = "Rękawice bramkarskie",
+               Price = 29,
+               Description = "Rękawice bramkarskie przeznaczone dla mężczyzn.",
+               Category = "Piłka nożna"
+           },
+           new Product
+           {
+               Id = 1,
+               Name = "Kask",
+               Price = 299,
+               Description = "Doskonały kask narciarski wyposażony w regulowany system wentylacji",
+               Category = "Narciarstwo",
+           },
+           new Product
+           {
+               Id = 2,
+               Name = "Szorty",
+               Price = 39,
+               Description = "Dziecięce szorty kąpielowe to idealny wybór na letni wypoczynek nad morzem lub jeziorem czy do codziennego użytku w upalne dni.",
+               Category = "Sporty wodne"
+           }
+    };
+
+            return products;
+        }
+
+    [HttpPost]
         public ActionResult Danedowysylki(UserData userData)
         {
             db.UserOrderData.Add(userData);
