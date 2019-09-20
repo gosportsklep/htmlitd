@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 
 namespace Sklep1.Controllers
 {
@@ -203,7 +205,22 @@ namespace Sklep1.Controllers
         public ActionResult DanePrzelew()
         {
             var order = db.Orders.SingleOrDefault(o => o.OrderStatus == "Pending");
-            return View(order);
+            if (order != null && !order.ProductsIds.IsEmpty())
+            {
+                var productsIds = order.ProductsIds.Substring(0, order.ProductsIds.Length - 1);
+                var sqlResult =
+                    db.Database.SqlQuery<Int32>("select sum(Price) as price from Products where Products.Id IN (" +
+                                                  productsIds + ")");
+                var kwota = sqlResult.First();
+                FinishOrder(order.Id);
+                return View(new Tuple<Order,Int32>(order,kwota));
+            }
+            else
+            {
+                return RedirectToAction("Sklep");
+            }
+
+            
         }
 
         public ActionResult Kontakt()

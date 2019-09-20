@@ -1,4 +1,4 @@
-﻿@model Sklep1.Models.Order
+﻿@model Tuple<Sklep1.Models.Order,Int32>
 
 @{
     ViewBag.Title = "DanePrzelew";
@@ -81,15 +81,16 @@
     <hr/>
     <dl class="dl-horizontal">
         @{
-            var tupleItem = Model;
+            var order = Model.Item1;
+            var kwota = Model.Item2;
             <text>Numer Twojego zamówienia: </text>
         <dt>
-            @Html.DisplayFor(model => tupleItem.Id)
+            @Html.DisplayFor(model => order.Id)
         </dt>
+
+
+            <text> Prosimy o przelew na konto 123412341234 na kwotę <b>@Html.DisplayFor(model => kwota)</b> zł, w tytule podaj numer zamowienia </text>
         }
-
-
-        <text> Prosimy o przelew na konto 123412341234, w tytule podaj numer zamowienia </text>
 
     </dl>
 </div>
